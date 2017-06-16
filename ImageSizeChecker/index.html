@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery</title>
+</head>
+<body>
+	<p><img src="image1.jpg"></p>
+	<p><img src="image2.jpg"></p>
+	<p><img src="image3.jpg"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+	    $(function() {
+    		$('img').click(function() {
+    			var msg = $(this).width() + ' x ' + $(this).height();
+    			$(this).wrap('<div style="position:relative;"></div>');
+    			var div = $('<div class="size">')
+    						.text(msg)
+    						.css('position', 'absolute')
+    						.css('top', '0')
+    						.css('background', 'black')
+    						.css('color', 'white')
+    						.css('font-size', '10px')
+    						.css('opacity', '0.9')
+    						.css('padding', '2px');
+    			$(this).after(div);
+    		});
+    		
+			$("body").on('dblclick', "img", function(){
+	    		$(".size").remove();
+	    	});
+	   	});
+    </script>
+</body>
+</html>
